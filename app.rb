@@ -6,6 +6,7 @@ class MakersBnb < Sinatra::Base
     #all listings
     #sign up button
     #add listing
+    erb :index
   end
 
   get '/sign-up' do
