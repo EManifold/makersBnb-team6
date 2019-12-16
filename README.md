@@ -14,8 +14,7 @@ As a user,
 So that I can rent a place,
 I want to be able to book a listing.
 
-<img width="1266" src="https://files.slack.com/files-pri/T03ALA7H4-FRDHU31LK/image.png">
-
+<img width="404" alt="Screenshot 2019-12-16 at 12 44 57" src="https://user-images.githubusercontent.com/53044792/70925399-0e0e8c00-2023-11ea-9afd-9937037e5316.png">
 
 TO DO
 
@@ -43,7 +42,7 @@ User class
 
 Listing class
 .book
-.create 
+.create
 .find
 .all
 .delete
