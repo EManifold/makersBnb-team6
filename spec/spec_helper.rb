@@ -1,4 +1,5 @@
 require './app'
+require './lib/user'
 ENV['RACK_ENV'] = 'test'
 
 require 'capybara'
