@@ -33,4 +33,5 @@ end
       expect(result.email).to eq(@created_user.email)
     end
   end
+
 end
