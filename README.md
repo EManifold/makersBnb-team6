@@ -51,3 +51,10 @@ Listing class
 
 	 3.	Controller + views(:erb)
 Everyone need to have a database on their Mac
+
+## Homepage div structure
+![Homepage](/img/homepage.png)
+
+
+## Listings div structure
+![Homepage](/img/listings.png)
