@@ -22,8 +22,8 @@ end
     end
 
     it "Can acknowledge incorrect details" do
-      expect{ User.login(email: 'blart', password: 'secret') }.to raise_error
-      expect{ User.login(email: 'bop', password: 'hidden') }.to raise_error
+      expect(User.login(email: 'blart', password: 'secret')).to be_nil
+      expect(User.login(email: 'bop', password: 'hidden')).to be_nil
     end
   end
 
