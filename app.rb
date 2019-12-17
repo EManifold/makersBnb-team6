@@ -1,5 +1,5 @@
 require 'sinatra'
-require './database_connection_setup'
+require ‘database_connection_setup’
 
 class MakersBnb < Sinatra::Base
 
@@ -7,46 +7,54 @@ class MakersBnb < Sinatra::Base
     #all listings
     #sign up button
     #add listing
+    erb :index
   end
 
   get '/sign-up' do
     #form
     #submit button
+    erb :sign_up
   end
 
   post '/sign-up' do
     #user details (params)
     #redirect to '/'
+    redirect '/'
   end
 
-  get '/new' do
+  get '/listing/new' do
     #form
     #submit
+    erb :'listing/new'
   end
 
-  post '/new' do
+  post '/listing/new' do
     #listing details (params)
-    #redirect to '/listing_id'
+    redirect 'listing/id'
+
   end
 
-  get '/listing-id' do
+  get '/listing/id' do
     #details of listing
     #book button should redirect to '/listing-id/book'
+    erb :'listing/id'
   end
 
   get '/listing-id/book' do
     #form
     #submit button
+    erb :'listing-id/book'
   end
 
   post '/listing-id/book' do
     #booking details
-    #redirect to booking confirmation
+    redirect '/listing-id/confirmation'
   end
 
   get '/listing-id/confirmation' do
     #booking details
     #homepage button
+    erb :'listing-id/confirmation'
   end
 
   run! if app_file == $0
