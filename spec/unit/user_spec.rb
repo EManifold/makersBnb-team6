@@ -8,6 +8,11 @@ end
     it 'Should create user instance with name attribute' do
       expect(@created_user.name).to eq('foop')
     end
+
+    it 'Should make a secure password' do
+      expect(BCrypt::Password).to receive(:create).with('Cheese')
+      User.create(email: 'goggle', username: 'dog', name: 'strong', password: 'Cheese')
+    end
   end
 
   # describe '#login' do
