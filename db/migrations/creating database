@@ -4,6 +4,6 @@ $ psql
 
 $ CREATE DATABASE makersbnb;
 
-#After you created all the tables in makersbnb you have to create a test database with:
+# After you created all the tables in makersbnb you have to create a test database with:
 
 $ CREATE DATABASE makersbnb_test WITH TEMPLATE makersbnb;
