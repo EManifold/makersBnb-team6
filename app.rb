@@ -12,6 +12,7 @@ class MakersBnb < Sinatra::Base
   get '/sign-up' do
     #form
     #submit button
+    erb :sign_up
   end
 
   post '/sign-up' do
@@ -32,6 +33,7 @@ class MakersBnb < Sinatra::Base
   get '/listing-id' do
     #details of listing
     #book button should redirect to '/listing-id/book'
+    erb :listing_id
   end
 
   get '/listing-id/book' do
