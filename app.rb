@@ -1,4 +1,5 @@
 require 'sinatra'
+require './lib/listing'
 
 class MakersBnb < Sinatra::Base
 
@@ -7,6 +8,11 @@ class MakersBnb < Sinatra::Base
     #sign up button
     #add listing
     erb :index
+  end
+
+  get '/listings' do
+    @listings = Listing.all
+    erb :listings
   end
 
   get '/sign-up' do
