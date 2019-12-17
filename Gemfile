@@ -7,6 +7,7 @@ ruby '2.6.3'
 
 # gem "rails"
 
+gem 'bcrypt'
 gem 'pg'
 gem 'rack'
 gem 'capybara'
