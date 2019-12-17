@@ -39,6 +39,7 @@ class MakersBnb < Sinatra::Base
   get '/listing-id/book' do
     #form
     #submit button
+    erb :listing_id_book
   end
 
   post '/listing-id/book' do
