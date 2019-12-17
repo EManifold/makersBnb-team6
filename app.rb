@@ -23,6 +23,7 @@ class MakersBnb < Sinatra::Base
   get '/new' do
     #form
     #submit
+    erb :new
   end
 
   post '/new' do
@@ -50,6 +51,7 @@ class MakersBnb < Sinatra::Base
   get '/listing-id/confirmation' do
     #booking details
     #homepage button
+    erb :lisitng_id_confirmation
   end
 
   run! if app_file == $0
