@@ -1,13 +1,9 @@
 <h1> Welcome to MakersBnb</h1>
 
-<ul>
-<% @listings.each do |listing| %>
- <li> <%= puts listing %> </li>
- <% end %>
-</ul>
-
-
-<button id="Sign-Up" href="/sign-up">Sign Up</button>
+<form action="/sign-up" method="get">
+  <input type="submit" value="Sign Up">
+</form>
+<!-- <button id="Sign-Up" href="/sign-up">Sign Up</button> -->
 
 <button id="log-in">Log In</button>
 

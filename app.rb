@@ -18,6 +18,7 @@ class MakersBnb < Sinatra::Base
   post '/sign-up' do
     #user details (params)
     #redirect to '/'
+    redirect :index
   end
 
   get '/new' do
@@ -28,7 +29,8 @@ class MakersBnb < Sinatra::Base
 
   post '/new' do
     #listing details (params)
-    #redirect to '/listing_id'
+    redirect  :listing_id
+
   end
 
   get '/listing-id' do
@@ -45,7 +47,7 @@ class MakersBnb < Sinatra::Base
 
   post '/listing-id/book' do
     #booking details
-    #redirect to booking confirmation
+    redirect :listing_id_confirmation
   end
 
   get '/listing-id/confirmation' do
