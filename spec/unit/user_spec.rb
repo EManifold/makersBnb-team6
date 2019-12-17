@@ -15,10 +15,22 @@ end
     end
   end
 
-  # describe '#login' do
-  #   it 'Can log in with existing details' do
-  #     recurrent_user = User.login(email: 'bop', password: 'zee')
-  #     expect(recurrent_user.name).to eq('foop')
-  #   end
-  # end
+  describe '#login' do
+    it 'Can log in with existing details' do
+      return_user = User.login(email: 'bop', password: 'secret')
+      expect(return_user.name).to eq('foop')
+    end
+
+    it "Can acknowledge incorrect details" do
+      expect{ User.login(email: 'blart', password: 'secret') }.to raise_error
+      expect{ User.login(email: 'bop', password: 'hidden') }.to raise_error
+    end
+  end
+
+  describe '#find' do
+    it 'Can obtain user by ID' do
+      result = User.find(@created_user.id)
+      expect(result.email).to eq(@created_user.email)
+    end
+  end
 end
