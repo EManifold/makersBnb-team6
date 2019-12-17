@@ -18,42 +18,42 @@ class MakersBnb < Sinatra::Base
   post '/sign-up' do
     #user details (params)
     #redirect to '/'
-    redirect :index
+    redirect '/'
   end
 
-  get '/new' do
+  get '/listing/new' do
     #form
     #submit
-    erb :new
+    erb :'listing/new'
   end
 
-  post '/new' do
+  post '/listing/new' do
     #listing details (params)
-    redirect  :listing_id
+    redirect 'listing/id'
 
   end
 
-  get '/listing-id' do
+  get '/listing/id' do
     #details of listing
     #book button should redirect to '/listing-id/book'
-    erb :listing_id
+    erb :'listing/id'
   end
 
   get '/listing-id/book' do
     #form
     #submit button
-    erb :listing_id_book
+    erb :'listing-id/book'
   end
 
   post '/listing-id/book' do
     #booking details
-    redirect :listing_id_confirmation
+    redirect '/listing-id/confirmation'
   end
 
   get '/listing-id/confirmation' do
     #booking details
     #homepage button
-    erb :lisitng_id_confirmation
+    erb :'listing-id/confirmation'
   end
 
   run! if app_file == $0
