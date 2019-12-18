@@ -13,6 +13,21 @@ class MakersBnb < Sinatra::Base
     erb :index
   end
 
+  get '/login/new'
+
+    erb: :'/login/new'
+  end
+
+  post '/login' do
+
+    
+    redirect '/'
+  end
+
+  post '/login/destroy' do
+
+  end
+
   get '/listings' do
     @listings = Listing.all
     erb :listings
