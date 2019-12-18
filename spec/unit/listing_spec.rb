@@ -29,4 +29,12 @@ describe "Listing" do
     end
   end
 
+  describe ".find_by_id" do
+    it "should find the listing based on id" do
+      listing = Listing.create(owner_id: 001, title: 'test_title', address: 'test_address_1', description: 'test_description', price: 'test_price')
+      result = Listing.find_by_id(listing.id)
+      expect(result.title).to eq listing.title
+    end
+  end
+
 end
