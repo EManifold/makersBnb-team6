@@ -1,6 +1,7 @@
 require './app'
 require './lib/user'
 require_relative './setup_test_database'
+require './spec/features/web_helpers.rb'
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
