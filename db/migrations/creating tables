@@ -6,4 +6,4 @@ $ CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(60), email VARCHAR(60)
 
 $ CREATE TABLE bookings (id SERIAL PRIMARY KEY, listing_id VARCHAR(60), user_id VARCHAR(60), start_date VARCHAR(80), end_date VARCHAR(60));
 
-$ CREATE TABLE listings (id SERIAL PRIMARY KEY, owner_id VARCHAR(60), address VARCHAR(100), description VARCHAR(500), price VARCHAR(60), photo VARCHAR(240));
+$ CREATE TABLE listings (id SERIAL PRIMARY KEY, owner_id VARCHAR(60), address VARCHAR(100), description VARCHAR(500), price VARCHAR(60), photo VARCHAR(240), title VARCHAR(120));
