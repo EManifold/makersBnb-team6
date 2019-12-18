@@ -1,9 +1,12 @@
 require 'sinatra'
 require './lib/listing'
+require './lib/user'
 
 class MakersBnb < Sinatra::Base
+  enable :sessions
 
   get '/' do
+    @user = User.find(session[:user_id])
     #all listings
     #sign up button
     #add listing
@@ -16,14 +19,12 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/sign-up' do
-    #form
-    #submit button
     erb :sign_up
   end
 
   post '/sign-up' do
-    #user details (params)
-    #redirect to '/'
+    user = User.create(email: params[:email], password: params[:password], name: params[:name], username: params[:username])
+    session[:user_id] = user.id.to_i
     redirect '/'
   end
 
