@@ -13,14 +13,11 @@ class MakersBnb < Sinatra::Base
     erb :index
   end
 
-  get '/login/new'
-
-    erb: :'/login/new'
+  get '/login/new' do
+    erb :'/login/new'
   end
 
   post '/login' do
-
-    
     redirect '/'
   end
 
@@ -52,8 +49,7 @@ class MakersBnb < Sinatra::Base
   post '/listing/new' do
     #listing details (params)
     listing = Listing.create(owner_id: 002, title: params[:title], address: params[:address], description: params[:description], price: params[:price])
-    $listing = listing
-    redirect '/listing/id'
+    redirect '/listings'
 
   end
 
@@ -83,10 +79,10 @@ class MakersBnb < Sinatra::Base
   post '/book/:id' do
     #booking details
     @listing = Listing.find_by_id(params[:id])
-    redirect '/:id/confirmation'
+    redirect "/confirmation/#{@listing.id}"
   end
 
-  get '/:id/confirmation' do
+  get '/confirmation/:id' do
     #booking details
     #homepage button
     @listing = Listing.find_by_id(params[:id])
