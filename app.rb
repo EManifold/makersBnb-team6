@@ -40,6 +40,15 @@ class MakersBnb < Sinatra::Base
 
   end
 
+  get '/listing/search' do
+    #Search page, allows user to call on find method
+    erb :'listing/search'
+  end
+
+  post '/listing/go' do
+    redirect '/listings'
+  end
+
   get '/listing/id' do
     #details of listing
     #book button should redirect to '/listing-id/book'
