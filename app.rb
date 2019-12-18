@@ -35,31 +35,36 @@ class MakersBnb < Sinatra::Base
 
   post '/listing/new' do
     #listing details (params)
-    Listing.create(owner_id: 002, title: params[:title], address: params[:address], description: params[:description], price: params[:price])
+    listing = Listing.create(owner_id: 002, title: params[:title], address: params[:address], description: params[:description], price: params[:price])
+    $listing = listing
     redirect '/listing/id'
 
   end
 
-  get '/listing/id' do
+  get '/listing/:id' do
     #details of listing
     #book button should redirect to '/listing-id/book'
+    @listing = Listing.find_by_id(params[:id])
     erb :'listing/id'
   end
 
-  get '/listing-id/book' do
+  get '/book/:id' do
     #form
     #submit button
+    @listing = Listing.find_by_id(params[:id])
     erb :'listing-id/book'
   end
 
-  post '/listing-id/book' do
+  post '/book/:id' do
     #booking details
-    redirect '/listing-id/confirmation'
+    @listing = Listing.find_by_id(params[:id])
+    redirect '/:id/confirmation'
   end
 
-  get '/listing-id/confirmation' do
+  get '/:id/confirmation' do
     #booking details
     #homepage button
+    @listing = Listing.find_by_id(params[:id])
     erb :'listing-id/confirmation'
   end
 
