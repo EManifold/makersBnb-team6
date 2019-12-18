@@ -37,4 +37,14 @@ describe "Listing" do
     end
   end
 
+  describe ".search" do
+  it "should return only results matching key words" do
+    Listing.create(owner_id: 002, title: 'test_title_7', address: 'test_address_7', description: 'test_description_7', price: 'test_price_7')
+    Listing.create(owner_id: 003, title: 'test_title_3', address: 'test_address_3', description: 'test_description_3', price: 'test_price_3')
+    results = Listing.search('test_title_7')
+    expect(results[0].address).to eq ('test_address_7')
+  end
+  
+  end
+
 end
