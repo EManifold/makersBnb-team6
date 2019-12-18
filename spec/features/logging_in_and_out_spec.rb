@@ -1,20 +1,20 @@
 feature 'authentication' do
   scenario 'a user can sign in' do
-    visit('/')
-    click_button('Sign Up')
+    sign_up
+    sign_in
 
-    fill_in 'name', with: 'Daniel'
-    fill_in 'username', with: 'programmingMachine'
-    fill_in 'email', with: 'text@example.com'
-    fill_in 'password', with: 'shhh'
-    user = User.create(name: 'Daniel', username: 'programmingMachine', email: 'test@example.com', password: 'shhh')
-    click_button('Submit')
+    expect(page).to have_content('Daniel')
+  end
 
-    click_button('login')
-    fill_in 'email', with: 'text@example.com'
-    fill_in 'password', with: 'shhh'
-    click_button('login')
+  scenario 'a user can log out' do
+    User.create(name: 'Daniel', username: 'programmingMachine', email: 'text@example.com', password: 'shhh')
+    sign_in
 
-    expect(page).to have_content(user.name)
+    expect(page).to have_content('Daniel')
+
+    visit ('/')
+    click_button('Sign out')
+    expect(page).to_not have_content('Daniel')
   end
 end
+
