@@ -13,19 +13,25 @@ class MakersBnb < Sinatra::Base
     erb :index
   end
 
-  get '/login/new'
-
-    erb: :'/login/new'
+  get '/login/new' do
+    erb:'login/new'
   end
 
   post '/login' do
-
-    
+    user = User.login(email: params[:email], password: params[:password])
+  
+    if user
+      session[:user_id] = user.id
+      redirect '/'
+    else
+      redirect '/login/new'
+    end
     redirect '/'
   end
 
   post '/login/destroy' do
-
+    session.clear
+    redirect '/'
   end
 
   get '/listings' do
