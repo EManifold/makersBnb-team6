@@ -3,9 +3,10 @@ require_relative 'database_connection'
 
 class Booking
 
-  attr_reader :listing_id, :user_id, :start_date, :end_date, :no_of_people, :total_price
+  attr_reader :id, :listing_id, :user_id, :start_date, :end_date, :no_of_people, :total_price
 
-  def initialize(listing_id:, user_id:, start_date:, end_date:, no_of_people:, total_price:)
+  def initialize(id:, listing_id:, user_id:, start_date:, end_date:, no_of_people:, total_price:)
+    @id = id
     @listing_id = listing_id
     @user_id = user_id
     @start_date = start_date
@@ -17,7 +18,14 @@ class Booking
   def self.create(listing_id:, user_id:, start_date:, end_date:, no_of_people:, total_price:)
     DatabaseConnection.start
 
-    result = DatabaseConnection.query("INSERT INTO bookings(listing_id, user_id, start_date, end_date, no_of_people, total_price) VALUES('#{listing_id}', '#{user_id}', '#{start_date}', '#{end_date}', '#{no_of_people}', '#{total_price}') RETURNING listing_id, user_id, start_date, end_date, no_of_people, total_price")
-    Booking.new(listing_id: result[0]['listing_id'], user_id: result[0]['user_id'], start_date: result[0]['start_date'], end_date: result[0]['end_date'], no_of_people: result[0]['no_of_people'], total_price: result[0]['total_price'])
+    result = DatabaseConnection.query("INSERT INTO bookings(listing_id, user_id, start_date, end_date, no_of_people, total_price) VALUES('#{listing_id}', '#{user_id}', '#{start_date}', '#{end_date}', '#{no_of_people}', '#{total_price}') RETURNING id, listing_id, user_id, start_date, end_date, no_of_people, total_price")
+    Booking.new(id: result[0]['id'], listing_id: result[0]['listing_id'], user_id: result[0]['user_id'], start_date: result[0]['start_date'], end_date: result[0]['end_date'], no_of_people: result[0]['no_of_people'], total_price: result[0]['total_price'])
   end
+
+  def self.find_by_id(id)
+    DatabaseConnection.start
+    found_booking = DatabaseConnection.query("SELECT * FROM bookings WHERE id = #{id}")
+    Booking.new(id: found_booking[0]['id'], listing_id: found_booking[0]['listing_id'], user_id: found_booking[0]['user_id'], start_date: found_booking[0]['start_date'], end_date: found_booking[0]['end_date'], no_of_people: found_booking[0]['no_of_people'], total_price: found_booking[0]['total_price'])
+  end
+
 end

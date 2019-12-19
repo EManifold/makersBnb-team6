@@ -98,9 +98,8 @@ class MakersBnb < Sinatra::Base
     #booking details
     @listing = Listing.find_by_id(params[:id])
     session[:listing_id] = @listing.id
-    p session[:listing_id]
-    p session[:listing_id].is_a?(String)
     @booking = Booking.create(listing_id: session[:listing_id], user_id: session[:user_id], start_date: params[:StartDate], end_date: params[:EndDate], no_of_people: params[:NumberOfPeople], total_price: params[:TotalPrice])
+    session[:booking_id] = @booking.id
     redirect "/confirmation/#{@listing.id}"
   end
 
@@ -108,6 +107,8 @@ class MakersBnb < Sinatra::Base
     #booking details
     #homepage button
     @listing = Listing.find_by_id(params[:id])
+    @user = User.find(session[:user_id])
+    @booking = Booking.find_by_id(session[:booking_id])
     erb :'listing-id/confirmation'
   end
 
