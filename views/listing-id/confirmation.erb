@@ -1,8 +1,8 @@
-<h1> Thank you <%= @user.name %> for booking with Makers Bnb</h1>
+<h1> Thank you <%= @user.name %> for booking <%= @listing.title %> with Makers Bnb</h1>
 <h3>Booking Details:</h3>
 Name of Property: <%= @listing.title %><br>
 Booking number:<%= @booking.listing_id %><br>
 Start Date:<%= @booking.start_date %><br>
 End Date:<%= @booking.end_date %><br>
 Number of People:<%= @booking.no_of_people %><br>
-Total price:<%= @booking.total_price %>
+Total price:<%= Booking.price_check(@booking.start_date, @booking.end_date, @booking.no_of_people, @listing.price) %>
