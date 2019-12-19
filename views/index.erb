@@ -1,2 +1,8 @@
 
 <h1> Welcome to MakersBnb <%if @user %><%= @user.name %><% end %></h1>
+
+<span> Search titles, addresses or prices with any keyword</span><br>
+<form action = "/listing/go" method="post">
+<input type="text" name="keyword" placeholder="Your keyword here"><br>
+<input type="submit" value="Find matching listings">
+</form>
