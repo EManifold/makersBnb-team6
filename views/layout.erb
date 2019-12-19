@@ -20,35 +20,40 @@
         <li class="nav-item">
           <a class="nav-link" href="/listings">View Listings</a>
         </li>
+
+        <% if @user %>
         <li class="nav-item">
           <a class="nav-link" href="/listing/new">Add new listing</a>
         </li>
+        <% end %>
       </ul>
 
+
       <ul class="navbar-nav ml-auto nav-flex-icons">
+        <% if !@user %>
+        <li class="nav-item">
+          <a href="/sign-up" class="nav-link waves-effect waves-light pr-2">
+            Sign Up
+          </a>
+        </li>
   			<li class="nav-item">
          	<a href="/login/new" class="nav-link waves-effect waves-light">
            	Login
           </a>
         </li>
+        <% else %>
+
   		 	<li class="nav-item">
-          <a href="/sign-up" class="nav-link waves-effect waves-light pr-2">
-           	Sign Up
-          </a>
-        </li>
-
-  		 	<!-- <li class="nav-item">
   				<a href="#" class="nav-link waves-effect waves-light">
-          # Add 'signed in as and erb tag with username'
+          Signed in as <%= @user.name %>
   				</a>
-  		 	</li> -->
-
-  		   <!-- <li class="nav-item">
-         	 <a href="/logout" class="nav-link waves-effect waves-light">
+  		 	</li>
+  		   <li class="nav-item">
+         	 <a href="/login/destroy" class="nav-link waves-effect waves-light">
              Logout
          	 </a>
-         </li> -->
-
+         </li>
+         <% end %>
       </ul>
     </div>
    </div>

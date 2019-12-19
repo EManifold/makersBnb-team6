@@ -9,16 +9,13 @@ class MakersBnb < Sinatra::Base
   get '/' do
     @user = User.find(session[:user_id])
     session[:search?] = false #Not searching by default
-    #all listings
-    #sign up button
-    #add listing
     erb :index, { :layout => :layout }
+
   end
 
   get '/login/new' do
     erb :'/login/new'
   end
-
 
 
   post '/login' do
@@ -32,7 +29,7 @@ class MakersBnb < Sinatra::Base
     end
   end
 
-  post '/login/destroy' do
+  get '/login/destroy' do
     session.clear
     redirect '/'
   end
