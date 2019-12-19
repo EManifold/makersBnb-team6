@@ -1,4 +1,10 @@
-feature 'confirmation' do
+feature 'booking and confirmation' do
+  scenario 'when requesting a booking should show the booking form' do
+    listing = Listing.create(owner_id: '1', title: 'test_title_1', address: 'test_address_1', description: 'test_description_1', price: '1')
+    visit("/book/#{listing.id}")
+    expect(page).to have_content "Start Date:"
+  end
+
   scenario 'should show a message thanking for booking that property' do
     listing = Listing.create(owner_id: '1', title: 'test_title_1', address: 'test_address_1', description: 'test_description_1', price: '1')
     visit("/book/#{listing.id}")
@@ -7,7 +13,8 @@ feature 'confirmation' do
     fill_in('NumberOfPeople', with: 78)
     fill_in('TotalPrice', with: 2)
     click_on 'Submit'
-    expect(page).to have_content "Thank you for booking #{listing.title} with Makers Bnb"
+    expect(page).to have_content "booking with MakersBnb"
     expect(page).to have_content "78"
   end
+
 end
