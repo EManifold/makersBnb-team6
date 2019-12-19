@@ -11,7 +11,7 @@ feature 'confirmation' do
     fill_in('NumberOfPeople', with: 78)
     fill_in('TotalPrice', with: 2)
     click_on 'Submit'
-    expect(page).to have_content "Thank you for booking #{listing.title} with Makers Bnb"
+    expect(page).to have_content "Thank you for booking with Makers Bnb"
     expect(page).to have_content "78"
 
   end

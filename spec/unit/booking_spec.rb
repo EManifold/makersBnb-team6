@@ -23,4 +23,12 @@ describe "Booking" do
     end
   end
 
+  describe ".price_check" do
+    it "Calculates the price of a stay from length and price per night" do
+      expect(Booking.price_check('2019-12-10','2019-12-20','1','2')).to eq('20')
+      expect(Booking.price_check('2019-11-30','2019-12-30','1', '2')).to eq('60')
+      expect(Booking.price_check('2019-12-05','2019-12-20','1', '2')).to eq('30')
+    end
+  end
+
 end
