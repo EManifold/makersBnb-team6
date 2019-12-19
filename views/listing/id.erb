@@ -1,5 +1,5 @@
 <p><%= @listing.title %></p>
 
-<form action="/book" method="get">
-  <input type="submit" value="Book Now">
+<form action='/book/<%= @listing.id %>' method="get">
+  <input type="submit" name='Book' value="Book Now">
 </form>

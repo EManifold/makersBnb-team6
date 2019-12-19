@@ -1,6 +1,7 @@
 require 'sinatra'
 require './lib/listing'
 require './lib/user'
+require './lib/booking'
 
 class MakersBnb < Sinatra::Base
   enable :sessions
@@ -14,8 +15,10 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/login/new' do
-    erb:'login/new'
+    erb :'/login/new'
   end
+
+ 
 
   post '/login' do
     user = User.login(email: params[:email], password: params[:password])
@@ -26,7 +29,6 @@ class MakersBnb < Sinatra::Base
     else
       redirect '/login/new'
     end
-    redirect '/'
   end
 
   post '/login/destroy' do
@@ -57,10 +59,8 @@ class MakersBnb < Sinatra::Base
 
   post '/listing/new' do
     #listing details (params)
-    listing = Listing.create(owner_id: 002, title: params[:title], address: params[:address], description: params[:description], price: params[:price])
-    $listing = listing
-    redirect '/listing/id'
-
+    @listing = Listing.create(owner_id: session[:user_id], title: params[:title], address: params[:address], description: params[:description], price: params[:price])
+    redirect '/listings'
   end
 
   get '/listing/search' do
@@ -89,10 +89,14 @@ class MakersBnb < Sinatra::Base
   post '/book/:id' do
     #booking details
     @listing = Listing.find_by_id(params[:id])
-    redirect '/:id/confirmation'
+    session[:listing_id] = @listing.id
+    p session[:listing_id]
+    p session[:listing_id].is_a?(String)
+    @booking = Booking.create(listing_id: session[:listing_id], user_id: session[:user_id], start_date: params[:StartDate], end_date: params[:EndDate], no_of_people: params[:NumberOfPeople], total_price: params[:TotalPrice])
+    redirect "/confirmation/#{@listing.id}"
   end
 
-  get '/:id/confirmation' do
+  get '/confirmation/:id' do
     #booking details
     #homepage button
     @listing = Listing.find_by_id(params[:id])
