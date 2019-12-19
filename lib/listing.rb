@@ -35,12 +35,4 @@ class Listing
     found_listing = DatabaseConnection.query("SELECT * FROM listings WHERE id = #{id}")
     Listing.new(id: found_listing[0]['id'], owner_id: found_listing[0]['owner_id'], title: found_listing[0]['title'], address: found_listing[0]['address'], description: found_listing[0]['description'], price: found_listing[0]['price'])
   end
-
-  # def add_booking(user_id:, start_date:, end_date:, no_of_people:, total_price:)
-  #   DatabaseConnection.start
-  #   booking = DatabaseConnection.query("INSERT INTO bookings(listing_id, user_id, start_date, end_date, no_of_people, total_price) VALUES('#{@id}', '#{user_id}', '#{start_date}', '#{end_date}', '#{no_of_people}', '#{total_price}') RETURNING id, user_id, start_date, end_date, no_of_people, total_price")
-  #   @bookings << booking
-  # end
-
-
 end

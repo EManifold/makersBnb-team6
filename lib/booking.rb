@@ -17,7 +17,7 @@ class Booking
   def self.create(listing_id:, user_id:, start_date:, end_date:, no_of_people:, total_price:)
     DatabaseConnection.start
 
-    result = DatabaseConnection.query("INSERT INTO bookings(listing_id, user_id, start_date, end_date, no_of_people, total_price) VALUES('#{@listing_id}', '#{user_id}', '#{start_date}', '#{end_date}', '#{no_of_people}', '#{total_price}') RETURNING listing_id, user_id, start_date, end_date, no_of_people, total_price")
+    result = DatabaseConnection.query("INSERT INTO bookings(listing_id, user_id, start_date, end_date, no_of_people, total_price) VALUES('#{listing_id}', '#{user_id}', '#{start_date}', '#{end_date}', '#{no_of_people}', '#{total_price}') RETURNING listing_id, user_id, start_date, end_date, no_of_people, total_price")
     Booking.new(listing_id: result[0]['listing_id'], user_id: result[0]['user_id'], start_date: result[0]['start_date'], end_date: result[0]['end_date'], no_of_people: result[0]['no_of_people'], total_price: result[0]['total_price'])
   end
 end
