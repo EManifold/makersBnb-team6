@@ -35,4 +35,13 @@ class Listing
     found_listing = DatabaseConnection.query("SELECT * FROM listings WHERE id = #{id}")
     Listing.new(id: found_listing[0]['id'], owner_id: found_listing[0]['owner_id'], title: found_listing[0]['title'], address: found_listing[0]['address'], description: found_listing[0]['description'], price: found_listing[0]['price'])
   end
+
+  def self.search(term)
+    DatabaseConnection.start
+    search_results = DatabaseConnection.query("SELECT * FROM listings WHERE (address LIKE '%#{term}%' OR title LIKE '%#{term}%' OR price LIKE '%#{term}%');")  
+    search_results.map do |result|
+      Listing.new(id: result['id'], owner_id: result['owner_id'], title: result['title'], address: result['address'], description: result['description'], price: result['price']) 
+    end
+  end
+
 end

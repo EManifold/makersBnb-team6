@@ -1,17 +1,22 @@
-<h1> Welcome to MakersBnb <%= @user.name %></h1>
+<h1> Welcome to MakersBnb <%if @user %><%= @user.name %><% end %></h1>
 
 <form action="/sign-up" method="get">
   <input type="submit" value="Sign Up">
 </form>
 
-<form action="/listing/new" method="get">
-  <input type="submit" value="Log in">
+<form action="/login/new" method="get">
+  <input type="submit" value="login">
 </form>
 
 <form action="/listing/new" method="get">
-  <input type="submit" value="Log in">
+  <input type="submit" value="Add listing">
 </form>
 
 <form action="/listing/search" method="get">
   <input type="submit" value="Search listings">
+</form>
+
+
+<form action="/login/destroy" method="post">
+  <input type="submit" value="Sign out" />
 </form>
