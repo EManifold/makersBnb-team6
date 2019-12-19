@@ -12,7 +12,7 @@ class MakersBnb < Sinatra::Base
     #all listings
     #sign up button
     #add listing
-    erb :index
+    erb :index, { :layout => :layout }
   end
 
   get '/login/new' do
