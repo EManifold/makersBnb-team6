@@ -8,6 +8,7 @@ class MakersBnb < Sinatra::Base
 
   get '/' do
     @user = User.find(session[:user_id])
+    session[:search?] = false #Not searching by default
     #all listings
     #sign up button
     #add listing
@@ -18,11 +19,11 @@ class MakersBnb < Sinatra::Base
     erb :'/login/new'
   end
 
- 
+
 
   post '/login' do
     user = User.login(email: params[:email], password: params[:password])
-  
+
     if user
       session[:user_id] = user.id
       redirect '/'
@@ -37,7 +38,12 @@ class MakersBnb < Sinatra::Base
   end
 
   get '/listings' do
-    @listings = Listing.all
+    if session[:search?] == true
+      @listings = Listing.search(session[:keyword])
+    else
+      @listings = Listing.all
+    end
+    session[:search?] = false #Variable already assigned, can reset boolean
     erb :listings
   end
 
@@ -69,6 +75,8 @@ class MakersBnb < Sinatra::Base
   end
 
   post '/listing/go' do
+    session[:search?] = true #Activate search
+    session[:keyword] = params['keyword']
     redirect '/listings'
   end
 
