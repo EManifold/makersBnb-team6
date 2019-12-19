@@ -66,11 +66,6 @@ class MakersBnb < Sinatra::Base
     redirect '/listings'
   end
 
-  get '/listing/search' do
-    #Search page, allows user to call on find method
-    erb :'listing/search'
-  end
-
   post '/listing/go' do
     session[:search?] = true #Activate search
     session[:keyword] = params['keyword']
