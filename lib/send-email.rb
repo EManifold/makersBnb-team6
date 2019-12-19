@@ -3,8 +3,6 @@ require_relative 'database_connection'
 require 'pg'
 include SendGrid
 
-### add enviroment variable in consol by pasting this - export SENDGRID_API_KEY=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
-
 class Email
   include SendGrid
 
