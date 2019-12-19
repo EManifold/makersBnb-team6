@@ -2,6 +2,7 @@ require 'sinatra'
 require './lib/listing'
 require './lib/user'
 require './lib/booking'
+require './lib/send-email'
 
 class MakersBnb < Sinatra::Base
   enable :sessions
@@ -54,6 +55,7 @@ class MakersBnb < Sinatra::Base
   post '/sign-up' do
     user = User.create(email: params[:email], password: params[:password], name: params[:name], username: params[:username])
     session[:user_id] = user.id.to_i
+    Email.register(session[:user_id])
     redirect '/'
   end
 
@@ -66,6 +68,7 @@ class MakersBnb < Sinatra::Base
   post '/listing/new' do
     #listing details (params)
     @listing = Listing.create(owner_id: session[:user_id], title: params[:title], address: params[:address], description: params[:description], price: params[:price])
+    Email.listing_confirmation(session[:user_id])
     redirect '/listings'
   end
 
@@ -100,6 +103,7 @@ class MakersBnb < Sinatra::Base
     session[:listing_id] = @listing.id
     @booking = Booking.create(listing_id: session[:listing_id], user_id: session[:user_id], start_date: params[:StartDate], end_date: params[:EndDate], no_of_people: params[:NumberOfPeople], total_price: params[:TotalPrice])
     session[:booking_id] = @booking.id
+    Email.booking_confirmation(session[:user_id])
     redirect "/confirmation/#{@listing.id}"
   end
 
