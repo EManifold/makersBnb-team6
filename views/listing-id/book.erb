@@ -1,7 +1,9 @@
 <form action='/book/<%= @listing.id %>' method='post'>
   Start Date: <input type='date' name='StartDate' placeholder='Date'><br>
   End Date: <input type='date' name='EndDate' placeholder='Date'><br>
-  Number of people: <input type='number' name='NumberOfPeople' placeholder="People?"><br>
-  Total Price: <input type='number' name='TotalPrice' placeholder='Price'><br>
+  Number of people: <input type='number' min='0' max='100' name='NumberOfPeople' placeholder="People?"><br>
+  Total Price: <input type='number' min='0' name='TotalPrice' placeholder='Price'><br>
   <input type='submit' name='Submit' value='Submit'>
 </form>
+
+<input type="hidden"            </input>
