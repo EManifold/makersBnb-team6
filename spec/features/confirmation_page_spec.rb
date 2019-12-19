@@ -8,9 +8,11 @@ feature 'confirmation' do
     visit("/book/#{listing.id}")
     fill_in "StartDate", with: '04-02-2010'
     fill_in "EndDate", with: '02-04-2020'
-    fill_in('NumberOfPeople', with: 2)
+    fill_in('NumberOfPeople', with: 78)
     fill_in('TotalPrice', with: 2)
-    click_on 'Book'
+    click_on 'Submit'
     expect(page).to have_content "Thank you for booking #{listing.title} with Makers Bnb"
+    expect(page).to have_content "78"
+
   end
 end
