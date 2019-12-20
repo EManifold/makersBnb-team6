@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="/stylesheets/new_listing.css">
 
+<h1 id="big_title"> Create a new listing </h1>
+
 <body>
 <div class="card">
 <form action='/listing/new' method='post'>
   Title: <input id = 'title' type='text' name='title' placeholder='Title'><br>
   Address: <input id = 'address' type='text' name='address' placeholder="Address"><br>
-  Description: <input id = 'description' type='text' name='description' placeholder='description'><br>
+  Description: <input id = 'description' type='text' name='Description' placeholder='Description'><br>
   Price: <input id = 'price' type='number' name='price' placeholder='Price'><br>
-  <input type='submit' value='Submit'>
+  <input id = 'submit_button' type='submit' value='Submit'>
 </form>
 </div>
 </body>

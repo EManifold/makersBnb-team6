@@ -12,20 +12,46 @@ body {
   height: 45%;
   background-color: rgb(227, 227, 227);
   opacity: 0.9;
+  padding-left: 15px;
+}
+
+#big_title {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 30px;
+  text-shadow: 0 0 5px rgba(179, 179, 179);
 }
 
 #title {
+  margin-top: 20px;
   margin-bottom: 10px;
+  padding-left: 20px;
+  text-align: left;
+  margin-left: 53px;
 }
 
 #address {
   margin-bottom: 10px;
+  padding-left: 20px;
+  text-align: left;
+  margin-left: 28px;
 }
 
 #description {
   margin-bottom: 10px;
+  padding-left: 20px;
+  text-align: left;
 }
 
 #price {
   margin-bottom: 10px;
+  padding-left: 20px;
+  text-align: left;
+  margin-left: 50px;
+}
+
+#submit_button {
+  margin-left: 95px;
+  margin-bottom: 25px;
 }
