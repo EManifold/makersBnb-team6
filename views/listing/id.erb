@@ -3,10 +3,10 @@
   <div class="card">
     <div id="header"><%= @listing.title %></div>
     <hr>
-    <div id="description"><%= @listing.title %></div>
-    <div id="price"><%= @listing.price %></div>
+    <div id="description"><%= @listing.description %></div>
+    <div id="price">£<%= @listing.price %> p/n</div>
         <form action='/book/<%= @listing.id %>' method="get">
-          <input type="submit" name="Book" value="Book Now">
+          <input type="submit" name=‘Book’ value="Book Now">
         </form>
     </div>
 </body>
