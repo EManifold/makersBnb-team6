@@ -1,8 +1,18 @@
 
-<h1> Welcome to MakersBnb <%if @user %><%= @user.name %><% end %></h1>
+<link rel="stylesheet" href="/stylesheets/homepage.css">
+<body>
+  <h1 id="title"> Welcome to MakersBnb <%if @user %><%= @user.name %><% end %></h1>
 
-<span> Search titles, addresses or prices with any keyword</span><br>
-<form action = "/listing/go" method="post">
-  <input type="text" name="keyword" placeholder="Your keyword here"><br>
-  <input type="submit" name="submit" value="Find matching listings">
-</form>
+  <div class="card">
+    <div class="card-header">Search titles, addresses or prices with any keyword</div>
+      <div class="card-body">
+        <form action = "/listing/go" method="post">
+          <div id="search-find">
+            <input id="search_input" type="text" name="keyword" placeholder="Your keyword here"><br>
+            <input id="search_button" type="submit" name="submit" value="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+
+</body>
