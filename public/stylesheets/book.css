@@ -1,0 +1,31 @@
+body {
+    background-image: url("https://i.imgur.com/PgFSwjI.png");
+    background-size: cover;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+
+  .card {
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+	margin-top: 80px;
+  margin-left: 60px;
+  width: 35%;
+  height: 45%;
+  background-color: rgb(227, 227, 227);
+  opacity: 0.9;
+}
+
+#start_date {
+  margin-bottom: 10px;
+  margin-left: 8.5px;
+}
+
+#end_date {
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+#number_of_people {
+  margin-bottom: 10px;
+}
+
