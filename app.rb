@@ -92,6 +92,7 @@ class MakersBnb < Sinatra::Base
     #form
     #submit button
     @listing = Listing.find_by_id(params[:id])
+    @user = User.find(session[:user_id])
     erb :'listing-id/book'
   end
 
