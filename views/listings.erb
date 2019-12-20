@@ -1,10 +1,18 @@
-<ul>
-  <% @listings.reverse.each do |listing| %>
-  <li>
-    <a id="link" name="<%= listing.title %>" href='/listing/<%= listing.id %>'><%= listing.title %></a>
-  </li>
+
+<link rel="stylesheet" href="/stylesheets/listings.css">
+
+<body>
+  <ul>
+    <% @listings.reverse.each do |listing| %>
+    <div class="card">
+      <a id="link" name="<%= listing.title %>" href='/listing/<%= listing.id %>'><%= listing.title %></a>
+      <div id="description"><%= listing.description %></div>
+      <hr>
+      <div id="price">£<%= listing.price %> p/n</div>
+    </div>
+    <% end %>
+  </ul>
+  <% if @listings.empty? %>
+  <p> Nope, sorry! Nothing.</p>
   <% end %>
-</ul>
-<% if @listings.empty? %>
-<p> Nope, sorry! Nothing.</p>
-<% end %>
+</body>
