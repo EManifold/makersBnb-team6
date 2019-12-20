@@ -1,6 +1,20 @@
+<link rel="stylesheet" href="/stylesheets/book.css">
+
+
+
+<body>
+<div class="card">
+    <div class="card-header">Make your booking!!</div>
+      <div class="card-body">
 <form action='/book/<%= @listing.id %>' method='post'>
-  Start Date: <input type='date' name='StartDate' placeholder='Date'><br>
-  End Date: <input type='date' name='EndDate' placeholder='Date'><br>
-  Number of people: <input type='number' name='NumberOfPeople' placeholder="People?"><br>
+
+  Start Date: <input id='start_date' type='date' name='StartDate' placeholder='Date'><br>
+  End Date: <input id='end_date' type='date' name='EndDate' placeholder='Date'><br>
+  Number of people: <input id='number_of_people' type='number' name='NumberOfPeople' placeholder="People?"><br>
   <input type='submit' name='Submit' value='Submit'>
-</form>
+  </div>
+  </form>
+  </div>
+  </div>
+
+  </body>
