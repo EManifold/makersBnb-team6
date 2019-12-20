@@ -1,5 +1,12 @@
-<p><%= @listing.title %></p>
-
-<form action='/book/<%= @listing.id %>' method="get">
-  <input type="submit" name='Book' value="Book Now">
-</form>
+<link rel="stylesheet" href="/stylesheets/id.css">
+<body>
+  <div class="card">
+    <div id="header"><%= @listing.title %></div>
+    <hr>
+    <div id="description"><%= @listing.description %></div>
+    <div id="price">£<%= @listing.price %> p/n</div>
+        <form action='/book/<%= @listing.id %>' method="get">
+          <input type="submit" name=‘Book’ value="Book Now">
+        </form>
+    </div>
+</body>
